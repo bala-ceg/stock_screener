@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__)
 
-conn_string = f"dbname={os.environ.get("db")} user={os.environ.get("user")} host={os.environ.get("host")} port={os.environ.get("port")} password={os.environ.get("password")}"
+conn_string = f'dbname={os.environ.get("db")} user={os.environ.get("user")} host={os.environ.get("host")} port={os.environ.get("port")} password={os.environ.get("password")}'
 
 def connect_to_db():
     conn = psycopg2.connect(conn_string)
