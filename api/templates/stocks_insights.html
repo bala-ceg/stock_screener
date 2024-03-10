@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Stocks Insights</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Custom styles for fancy tabs */
+        body {
+            background-color: #d2eaf1; /* Changed background color */
+        }
+        .nav-tabs .nav-item {
+            margin-bottom: 0;
+        }
+        .nav-tabs .nav-link {
+            padding-left: 20px;
+            padding-right: 20px; /* Added right padding */
+            color: #FF335F; /* Changed default color */
+            font-weight: bold; /* Added font weight */
+            font-size: 18px; /* Added font size */
+        }
+        .nav-tabs .nav-link:hover {
+            background-color: #fff; /* Added hover effect */
+        }
+        .nav-tabs .nav-link.active {
+            color: #fff; /* Changed active color */
+            background-color: #67228a; /* Changed active background color */
+        }
+        .tab-content .tab-pane {
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .navbar {
+            max-width: 100%; /* Set maximum width to 100% */
+            padding: 0; /* Remove default padding */
+            margin: 0; /* Remove default margin */
+        }
+        .navbar-nav {
+            width: 100%; /* Set navbar width to 100% */
+            justify-content: space-around; /* Distribute navbar items evenly */
+        }
+        table.GeneratedTable {
+    table-layout : fixed;
+    width: 100%;
+    background-color: #ffffff;
+    border-collapse: collapse;
+    border-width: 2px;
+    border-color: #ffcc00;
+    border-style: solid;
+    color: #000000;
+  }
+  
+  table.GeneratedTable td, table.GeneratedTable th {
+    border-width: 2px;
+    border-color: #ffcc00;
+    border-style: solid;
+    padding: 3px;
+  }
+  
+  table.GeneratedTable thead {
+    background-color: #00ff62;
+  }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <h2 class="text-center text-md-left mb-4">Indian Stock Insights</h2>
+        </div>
+        <div class="col-md-6 text-md-right mb-12">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQMAAADCCAMAAAB6zFdcAAABs1BMVEX///86LX3iICjpbybwtR3///06LX////w6LXw6Lnj9//////oyJHZ+d6YvH3qblrgoFnXFwdU6LIKAeKMiDW///P/o5vBVTIe4tMoyI3klE3A2KHz4///y7/f///eXkbU6L3TpbyOnork6K4XsuBcyI33jICXmHS4rG3PmHiiXkLfzsiLkcC3tbiHsbCzgdCPslCEuIWtxapb4rijaJCb+9s1qYpP//+/y2cDZnHfinXXtxaPofEbkZQ7vaQzdhk/749jlpIbZcyXgcTHtzLP37dbkspTbdjf78OPy2rjmjWPYZxrpl2bsvKHraRHeq4Lt0s3thA/gcxGfSDmFUUfW0+LUa3junSbghBuxXk5wPFu4X0G0r8z65+uMSVtHLGVgN1zejkvlk5zpBQDZEzWcVUukVFjkUhrUbkFTS30xJmXsuLfXT1dUOGNfVZPdABLgNyHgg3y+Zi1NQYn714t3Zp58d5UTAGTWNz49NG75nCvo2YC8Zz9WLmvRJRNvQGbqv5D4zIySanbww1/rvjzpv1bnq7DVX2Dqp1fYRCDXVmLkwA3HODnelI7hb1XOgWHxytXXw/qwAAARuElEQVR4nO2cjX8SV7rHDy/zjgQGhoRhmDBAYCJvEmhitWjWaM3edNPoLSa7xnav665aW9FtG412s7u31m5qe2//5PucM8MwM0zitST6WT2/IjFICOc7z/s5FCEqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqqn8zMZKoiQyHFE1iENIZLETu3h2JoqRLChK5pdPvnzktiogBJnD/LjFAiINFc0tnP+idO9c7f3ZJRDq2jHeJAcOInL78G2P9Qr2+Um/0ImdWAYIovgMM8HUGk8d/9Ivne0a92YhEDAP+NNbOn15CovOMt1c4Auhwr1/68PI6LN2tRu/yh6sQJyQELsG8vRg0DiQu/fY/mr2G0fIyAHsw1j46zWiA4e1OEKK4+rsPzhkXjHqk0RiD0DB6l3+3KmqaprzpN3psEpnlM71epNloNJv1ls8Z4Nt6PWL01s6c1pH2pt/qsUhRpNWL59fX603iBYbfCiINcAbCodE7fxGSJScGG4PtJ/gL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" alt="Placeholder Image">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-default" style="background: #67228a">
+                <div class="container-fluid">
+                    <ul role="tablist" class="nav nav-tabs sn-tabs-basic">
+                        <li role="presentation" class="enabled"> 
+                            <a id="tablabel1" aria-controls="tab1" tabindex="0" role="tab" class="nav-link active" data-toggle="tab" aria-selected="true" href="#tab1">Home</a>
+                        </li>
+                        <li role="presentation" class="enabled"> 
+                            <a id="tablabel2" aria-controls="tab2" tabindex="0" role="tab" class="nav-link" data-toggle="tab" href="#tab2" aria-selected="false">High Delivery - This Week</a>
+                        </li>
+                        <li role="presentation" class="enabled"> 
+                            <a id="tablabel2" aria-controls="tab3" tabindex="0" role="tab" class="nav-link" data-toggle="tab" href="#tab3" aria-selected="false">High Delivery - Last Week</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+                    <br>
+                    <p> Results for 5Day SMA > 50Day SMA AND Delivery volume Avg Week > Delivery volume Avg Month</p>
+                    <br>
+                    
+                    {{ table1 | safe }}
+                   
+                   
+                </div>
+                <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+                    <br>
+
+                    {{ table2 | safe }}
+                    
+                </div>
+                <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
+                    <br>
+
+                    {{ table3 | safe }}
+                 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#myTab a').on('click', function (e) {
+            e.preventDefault();
+            var target = $(this).attr('href');
+            $('.tab-pane').removeClass('show active');
+            $(target).addClass('show active');
+        });
+    });
+</script>
+</body>
+</html>
